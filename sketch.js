@@ -143,7 +143,7 @@ text("SCORE: "+score,windowWidth-200-40);
 
 function reset (){
     gameState=PLAY;
-    gameover.visible=fale;
+    gameover.visible=false;
     restart.visible=false;
     score=0;
     player.x=100;
