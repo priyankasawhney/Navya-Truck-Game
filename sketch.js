@@ -4,7 +4,6 @@ var restart, restartimg;
 var start, startimg;
 var gameover, gameoverimg;
 var bg1, bg1img;
-var bat, batimg;
 var bomb, bombimg;
 var hurdles, hurdlesimg;
 var landMonster, landMonsterimg;
@@ -31,11 +30,7 @@ bombimg=loadImage("bomb.png");
 hurdlesimg=loadImage("hurdles.png");
 landMonster=loadImage("landMonster.png");
 redspikes=loadImage("redspikes.png");
-skeletonimg=loadImage("skeleton.gif");
-snailimg=loadImage("snail.gif");
 snakeimg=loadImage("snake.png");
-spikeRoller=loadImage("spikeRoller.gif");
-bat=loadImage("bat.png");
 }
 
 function setup(){
@@ -43,13 +38,13 @@ createCanvas(windowWidth,windowHeight);
 bg=createSprite(0,0,windowWidth,windowHeight); 
 bg.addImage (bg1img);
 //bg.x=bg.width/2;
-bg.veloctyX=-9;
+bg.veloctyX=-12;
 bg.scale=2.3;
 
 player=createSprite(100,450,100,60);
 player.addImage(playerimg);
 player.scale=0.5;
-player.setCollider("circle",0,0,100);
+player.setCollider("rectangle",0,0,280,300,0);
 player.debug=true;
 
 ground=createSprite(width/2,460,windowWidth,10);
@@ -91,7 +86,7 @@ if (mousePressedOver(start)){
 }
 
 if (gameState===PLAY){
-bg.velocityX=-9;
+bg.velocityX=-12;
 score=score+Math.round(getFrameRate()/60);
 
 if(bg.x<0)
@@ -99,8 +94,8 @@ if(bg.x<0)
  bg.x=bg.width/2;
 }
 
-if(touches.length>0||keyDown("space")){
-    player.velocityY=-20;
+if(touches.length>0||keyDown("space")|| player.y>=400){
+    player.velocityY=-30;
     touches=[];
 }
 player.velocityY=player.velocityY+2;
@@ -154,7 +149,7 @@ function reset (){
 function obstacle(){
     if(frameCount%100===0){
         var obs=createSprite(1100,400,50,70);
-        obs.velocityX=-6;
+        obs.velocityX=-12;
         rand=Math.round(random(1,5));
         switch (rand){
             case 1: obs.addImage(bombimg);
@@ -173,7 +168,7 @@ function obstacle(){
             obs.scale=0.5;
             break;
 
-            case 5: obs.addImage(batimg);
+            case 5: obs.addImage(snakeimg);
             obs.scale=0.5;
             break;
 default: break;
