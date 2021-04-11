@@ -38,7 +38,7 @@ createCanvas(windowWidth,windowHeight);
 bg=createSprite(0,0,windowWidth,windowHeight); 
 bg.addImage (bg1img);
 //bg.x=bg.width/2;
-bg.veloctyX=-12;
+bg.velocityX=-12;
 bg.scale=2.3;
 
 player=createSprite(100,450,100,60);
@@ -94,7 +94,7 @@ if(bg.x<0)
  bg.x=bg.width/2;
 }
 
-if(touches.length>0||keyDown("space")|| player.y>=400){
+if(touches.length>0||keyDown("space")|| player.y>=420){
     player.velocityY=-30;
     touches=[];
 }
@@ -132,7 +132,7 @@ drawSprites();
 
 textSize(25);
 fill("red");
-text("SCORE: "+score,windowWidth-200-40);
+text("SCORE: "+score,windowWidth-220,40);
 
 }
 
